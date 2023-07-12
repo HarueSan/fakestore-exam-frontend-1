@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-
+import thousandSeparator from "@/utils/thousandSeparator";
 const store = createStore({
   state() {
     return {
@@ -68,7 +68,8 @@ const store = createStore({
     },
     getSubTotal(state) {
       const allCost = state.cart.map((i) => i.product.price * i.quantity);
-      return allCost.reduce((a, b) => a + b, 0).toFixed(2);
+      const result = allCost.reduce((a, b) => a + b, 0).toFixed(2);
+      return thousandSeparator(result)
     },
   },
 });

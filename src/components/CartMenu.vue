@@ -7,10 +7,10 @@
             </div>
             <v-list-item v-for="item in cart" :key="item.product.id">
                 <v-row>
-                    <v-col cols="3">
+                    <v-col cols="2">
                         <v-img :src="item.product.image" height="50px" width="50px" alt="product" />
                     </v-col>
-                    <v-col cols="9">
+                    <v-col cols="10">
                         <p class="text-body-1 mr-2 text-truncate">{{ item.product.title }}</p>
                         <div class="d-flex justify-space-between">
                             <div class="d-flex align-center">
@@ -23,7 +23,7 @@
                                 </v-btn>
                             </div>
                             <div class="text-right d-flex align-center">
-                                <p class="font-weight-bold">{{ (item.quantity * item.product.price).toFixed(2) }} $</p>
+                                <p class="font-weight-bold">{{ thousandSeparator((item.quantity * item.product.price).toFixed(2)) }} $</p>
                             </div>
                             <v-btn variant="text" size="small" icon="mdi-delete" color="error"
                                 @click="this.$store.commit('deleteFromCart', item.product)">
@@ -42,17 +42,21 @@
     </v-list>
 </template>
 <script>
+import thousandSeparator from '@/utils/thousandSeparator';
 export default {
     computed: {
         cart() {
             return this.$store.state.cart
         }
+    },
+    methods:{
+        thousandSeparator
     }
 }
 </script>
 <style scoped>
 .cart-list {
-    width: 320px;
+    width: 340px;
     min-height: 180px !important;
 }
 
