@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="mb-8 d-flex justify-start">
-      <v-btn-toggle v-model="selectedCategory" divided variant="outlined">
+      <v-btn-toggle v-model="selectedCategory" divided variant="outlined" color="secondary">
         <v-btn v-for="category in categories" :key="category">
           {{ category }}
         </v-btn>
@@ -10,26 +10,30 @@
     <v-row dense>
       <v-col v-for="product in products" :key="product.id" class="v-col-12 v-col-sm-6 v-col-md-4 v-col-lg-3 mb-2 pa-2">
         <v-card v-if="!isLoading" elevation="1" class="product-card pa-2">
-          <div class=" d-flex justify-start">
-            <v-chip size="small">{{ product.category }}</v-chip>
+          <div class=" d-flex justify-start mb-2">
+            <v-chip size="small" color="secondary">{{ product.category }}</v-chip>
           </div>
           <div class="product-img">
             <v-img :src="product.image"></v-img>
           </div>
-          <v-card-item class="pb-1">
+          <v-card-item class="pb-0">
             <h3 class="text-truncate">{{ product.title }}</h3>
             <p class="text-truncate">{{ product.description }}</p>
+            <div class="d-flex mt-2 text-left">
+              <v-icon size="small" color="amber" icon="mdi-star"></v-icon>
+              <p class=" text-subtitle-2 mr-1">{{ product?.rating?.rate }}</p>
+              <p class=" text-subtitle-2 text-grey-darken-1">({{ product?.rating?.count }} reviews)</p>
+            </div>
+            <div class="text-right">
+              <p class="text-h6">{{ product.price.toFixed(2) }} $</p>
+            </div>
+
           </v-card-item>
-          <v-card-actions class="pt-1 justify-center">
-            <div>
-              <div class="d-flex justify-center">
-                <v-icon size="small" color="amber" icon="mdi-star"></v-icon>
-                <p class=" text-subtitle-2 mr-1">{{ product?.rating?.rate }}</p>
-                <p class=" text-subtitle-2 text-grey-darken-1">({{ product?.rating?.count }} reviews)</p>
-              </div>
-              <p class="text-h6">{{ product.price }} $</p>
-              <v-btn @click="addToCart(product)" prepend-icon="mdi-cart-arrow-down" color="primary" variant="outlined">Add
-                to Cart</v-btn>
+          <v-card-actions class="pt-0">
+            <div class="d-flex align-center justify-end w-100">
+              <v-btn @click="addToCart(product)" prepend-icon="mdi-cart-arrow-down" variant="flat" color="primary">
+                Add to Cart
+              </v-btn>
             </div>
           </v-card-actions>
         </v-card>

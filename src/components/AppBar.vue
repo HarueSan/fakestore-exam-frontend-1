@@ -1,14 +1,17 @@
 <template>
-    <v-app-bar density="compact" color="primary" elevation="0" class="px-8">
-        <v-app-bar-title class="text-left">My Fake Store</v-app-bar-title>
+    <v-app-bar density="compact" color="primary" elevation="0" class="px-8 pa-2">
+        <v-app-bar-title class="text-left font-weight-bold">My Fake Store</v-app-bar-title>
         <template v-slot:append>
-            <v-btn prepend-icon="mdi-cart">Cart ({{ this.$store.getters.getCartLength }})
-                <v-menu activator="parent" :close-on-content-click="false">
-                    <cart-menu />
-                </v-menu>
-            </v-btn>
+            <p class=" text-body-1">
+                {{ this.$store.getters.getSubTotal }} $
+            </p>
+            <v-badge color="amber" :content="this.$store.getters.getCartLength">
+                <v-btn size="small" id="menu-activator" icon="mdi-cart"></v-btn>
+            </v-badge>
+            <v-menu activator="#menu-activator" :close-on-content-click="false">
+                <cart-menu />
+            </v-menu>
         </template>
-
     </v-app-bar>
 </template>
 

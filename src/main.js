@@ -8,7 +8,6 @@ import * as labsComponents from "vuetify/labs/components";
 import * as directives from "vuetify/directives";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import colors from "vuetify/lib/util/colors";
 
 import store from "./store";
 import router from "./router";
@@ -28,8 +27,8 @@ const vuetify = createVuetify({
       light: {
         dark: false,
         colors: {
-          primary: colors.red.darken1,
-          secondary: colors.red.lighten4, 
+          primary: "#3F51B5", // indigo
+          secondary: "#5C6BC0", 
         },
       },
     },

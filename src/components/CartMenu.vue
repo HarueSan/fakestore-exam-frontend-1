@@ -23,7 +23,7 @@
                                 </v-btn>
                             </div>
                             <div class="text-right d-flex align-center">
-                                <p>{{ item.quantity * item.product.price }} $</p>
+                                <p class="font-weight-bold">{{ (item.quantity * item.product.price).toFixed(2) }} $</p>
                             </div>
                             <v-btn variant="text" size="small" icon="mdi-delete" color="error"
                                 @click="this.$store.commit('deleteFromCart', item.product)">
