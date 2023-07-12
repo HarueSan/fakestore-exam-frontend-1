@@ -1,15 +1,18 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <router-view></router-view>
+  <v-layout>
+    <app-bar />
+    <v-main class="pa-0">
+      <router-view></router-view>
+    </v-main>
+  </v-layout>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import AppBar from '@/components/AppBar.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AppBar
   }
 }
 </script>
