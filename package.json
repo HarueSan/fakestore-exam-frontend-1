@@ -2,7 +2,7 @@
   "name": "fakestore-exam-frontend-1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://harauesan.github.io/fakestore-exam-frontend-1",
+  "homepage": "https://haruesan.github.io/fakestore-exam-frontend-1/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
