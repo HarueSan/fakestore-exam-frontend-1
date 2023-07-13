@@ -15,8 +15,10 @@
     </v-app-bar>
 </template>
 
+
 <script>
 import CartMenu from '@/components/CartMenu.vue'
+
 export default {
     components: {
         CartMenu

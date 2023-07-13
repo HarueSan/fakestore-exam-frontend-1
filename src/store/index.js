@@ -1,15 +1,17 @@
 import { createStore } from "vuex";
 import thousandSeparator from "@/utils/thousandSeparator";
+
+
 const store = createStore({
   state() {
     return {
       cart: [],
     };
   },
+
   mutations: {
     addToCart(state, payload) {
       const isExistInCart = state.cart.find((i) => i.product.id === payload.id);
-
       if (isExistInCart) {
         state.cart = state.cart.map((i) => {
           if (i.product.id === payload.id) {
@@ -24,9 +26,11 @@ const store = createStore({
         state.cart = [...state.cart, { product: payload, quantity: 1 }];
       }
     },
+
     deleteFromCart(state, payload) {
       state.cart = state.cart.filter((i) => i.product.id !== payload.id);
     },
+
     addQuantity(state, payload) {
       state.cart = state.cart.map((i) => {
         if (i.product.id === payload.id) {
@@ -38,6 +42,7 @@ const store = createStore({
         return i;
       });
     },
+
     removeQuantity(state, payload) {
       const existItem = state.cart.find((i) => i.product.id === payload.id);
       if (existItem) {
@@ -62,10 +67,12 @@ const store = createStore({
       });
     },
   },
+
   getters: {
     getCartLength(state) {
       return state.cart.length;
     },
+    
     getSubTotal(state) {
       const allCost = state.cart.map((i) => i.product.price * i.quantity);
       const result = allCost.reduce((a, b) => a + b, 0).toFixed(2);
@@ -73,5 +80,6 @@ const store = createStore({
     },
   },
 });
+
 
 export default store;

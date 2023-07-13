@@ -41,19 +41,25 @@
         </div>
     </v-list>
 </template>
+
+
 <script>
 import thousandSeparator from '@/utils/thousandSeparator';
+
 export default {
     computed: {
         cart() {
             return this.$store.state.cart
         }
     },
+    
     methods:{
         thousandSeparator
     }
 }
 </script>
+
+
 <style scoped>
 .cart-list {
     width: 340px;
