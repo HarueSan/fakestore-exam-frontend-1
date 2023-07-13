@@ -27,7 +27,6 @@
             <div class="text-right">
               <p class="text-h6">{{ product.price.toFixed(2) }} $</p>
             </div>
-
           </v-card-item>
           <v-card-actions class="pt-0">
             <div class="d-flex align-center justify-end w-100">
@@ -42,6 +41,7 @@
     </v-row>
   </v-container>
 </template>
+
 
 <script>
 import appConfig from '@/appConfig'
@@ -102,12 +102,12 @@ export default {
     },
 
     addToCart(value) {
-      // console.log(value.d)
       this.$store.commit('addToCart', value)
     }
   },
 }
 </script>
+
 
 <style scoped>
 .product-card {
