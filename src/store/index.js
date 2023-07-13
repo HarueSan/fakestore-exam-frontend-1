@@ -56,8 +56,6 @@ const store = createStore({
       state.cart = state.cart.map((i) => {
         if (i.product.id === payload.id) {
           const newQty = i.quantity - 1;
-          console.log(newQty);
-
           return {
             ...i,
             quantity: newQty,
@@ -72,7 +70,7 @@ const store = createStore({
     getCartLength(state) {
       return state.cart.length;
     },
-    
+
     getSubTotal(state) {
       const allCost = state.cart.map((i) => i.product.price * i.quantity);
       const result = allCost.reduce((a, b) => a + b, 0).toFixed(2);
